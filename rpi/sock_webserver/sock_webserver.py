@@ -1,0 +1,13 @@
+import socket
+ms= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+#ainfo=socket.getaddrinfo('192.168.178.22',80)
+#ainfo=socket.getaddrinfo(None,80)
+#print(ainfo)
+#ms.bind(ainfo[3][4])
+ms.bind(("", 80))
+ms.listen(5)
+conn,addr=ms.accept()
+data=conn.recv(1000)
+print("Got a request")
+conn.close()
+ms.close()
